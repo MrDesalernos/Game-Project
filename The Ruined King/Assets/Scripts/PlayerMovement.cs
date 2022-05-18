@@ -10,9 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
 
     bool jump = false;
+
+    Animator animator;
+
+    Rigidbody2D rigidbody2d;
+
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -23,12 +29,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+            animator.SetBool("IsJumping", jump);
         }
+
+
+
+        animator.SetFloat("Speed", rigidbody2d.velocity.magnitude);
     }
 
     private void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+        animator.SetBool("IsJumping", jump);
     }
 }
