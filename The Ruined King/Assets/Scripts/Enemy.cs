@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    Animator animator;
     public int maxHealth = 100;
     int currentHealth;
     void Start()
     {
-        currentHealth = maxHealth
+        animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        animator.SetBool("IsDead", true);
         Debug.Log("Enemy Died!");
     }
 }
