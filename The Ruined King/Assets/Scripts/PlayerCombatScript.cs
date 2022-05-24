@@ -11,6 +11,9 @@ public class PlayerCombatScript : MonoBehaviour
     public float attackRange = .5f;
     public LayerMask enemyLayers;
 
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
+
     public int attackDamage = 40;
     // Start is called before the first frame update
     void Start()
@@ -21,9 +24,13 @@ public class PlayerCombatScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Time.time >= nextAttackTime)
         {
-            Attack();
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
     }
 
