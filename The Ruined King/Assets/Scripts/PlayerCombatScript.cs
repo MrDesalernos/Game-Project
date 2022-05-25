@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCombatScript : MonoBehaviour
 {
+    public AudioSource source;
+    public AudioClip clip;
 
     public Animator animator;
 
@@ -15,6 +17,7 @@ public class PlayerCombatScript : MonoBehaviour
     float nextAttackTime = 0f;
 
     public int attackDamage = 40;
+    bool hit = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,11 @@ public class PlayerCombatScript : MonoBehaviour
             {
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
+                
+                if (hit == true)
+                {
+                    source.PlayOneShot(clip);
+                }
             }
         }
     }
@@ -43,7 +51,9 @@ public class PlayerCombatScript : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            hit = false;
         }
+        hit = true;
     }
 
     private void OnDrawGizmosSelected()

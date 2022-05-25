@@ -13,7 +13,10 @@ public class PlayerMovement : MonoBehaviour
 
     Animator animator;
 
-    Rigidbody2D rigidbody2d;
+    public AudioSource source;
+    public AudioClip clip;
+
+    private Rigidbody2D rigidbody2d;
 
     void Start()
     {

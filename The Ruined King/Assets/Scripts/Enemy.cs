@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     bool death = false;
     public int maxHealth = 100;
     int currentHealth;
+    public AudioSource source;
+    public AudioClip clip, deathSoundEffect;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour
         if (death == false)
         {
             animator.SetTrigger("Hurt");
+            source.PlayOneShot(clip);
         }
         if(currentHealth <= 0)
         {
@@ -41,5 +44,7 @@ public class Enemy : MonoBehaviour
         GetComponent<Collider2D>().enabled = true;
         Debug.Log("Enemy Died!");
         Destroy(gameObject, 1.2f);
+        source.PlayOneShot(deathSoundEffect);
+        
     }
 }
