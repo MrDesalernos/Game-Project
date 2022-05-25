@@ -38,6 +38,10 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        if (death == false)
+        {
+            ScoreManager.instance.AddPoint();
+        }
         death = true;
         animator.SetBool("IsDead", true);
         this.enabled = false;
