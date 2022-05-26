@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class StopWatch : MonoBehaviour
 {
-    public float timeStart;
+    public float timeStart = 0.0f;
     public Text textBox;
+    public Text startBtnText;
+
     bool timerActive = false;
+    bool TimerActiveWork = false;
+    bool TimerWork = true;
 
     //public Text currentTimeText;
 
@@ -24,6 +28,18 @@ public class StopWatch : MonoBehaviour
         {
             timeStart += Time.deltaTime;
             textBox.text = timeStart.ToString("F2");
+            TimerActiveWork = true;
+        }
+
+        if (TimerWork == true)
+        {
+            timeStart = 0.0f;
+            timerActive = false;
+        }
+
+        if (TimerActiveWork == true)
+        {
+            startBtnText.text =  "Click 2X to Restart";
         }
         //TimeSpan time = TimeSpan.FromSeconds(currentTime);
         //currentTimeText.text = time.Minutes.ToString() + ":" + time.Seconds.ToString();
@@ -32,6 +48,6 @@ public class StopWatch : MonoBehaviour
     public void timerButton()
     {
         timerActive = !timerActive;
-
+        TimerWork = !TimerWork;
     }
 }

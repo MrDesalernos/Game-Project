@@ -49,6 +49,5 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy Died!");
         Destroy(gameObject, 1.2f);
         source.PlayOneShot(deathSoundEffect);
-        
     }
 }
