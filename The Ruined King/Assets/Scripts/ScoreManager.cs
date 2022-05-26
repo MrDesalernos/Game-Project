@@ -39,7 +39,8 @@ public class ScoreManager : MonoBehaviour
             GameObject mainCamera = GameObject.Find("Main Camera");
             StopWatch stopWatch = mainCamera.GetComponent<StopWatch>();
             stopWatch.timerActive = false;
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
+            score = 0;
         }
     }
     // Update is called once per frame
