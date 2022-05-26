@@ -9,7 +9,7 @@ public class StopWatch : MonoBehaviour
     public Text textBox;
     public Text startBtnText;
 
-    bool timerActive = false;
+    public bool timerActive = false;
     bool TimerActiveWork = false;
     bool TimerWork = true;
 

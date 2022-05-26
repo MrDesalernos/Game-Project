@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     public Text highscoreText;
 
+    
+
     static int score = 0;
     int highscore = 0;
 
@@ -24,6 +26,8 @@ public class ScoreManager : MonoBehaviour
     {
         scoreText.text = "Score " + score.ToString() + "/20";
         highscoreText.text = "Highscore: " + highscore.ToString();
+
+        
     }
 
     public void AddPoint()
@@ -32,6 +36,9 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "Score " + score.ToString() + "/20";
         if (score == 20)
         {
+            GameObject mainCamera = GameObject.Find("Main Camera");
+            StopWatch stopWatch = mainCamera.GetComponent<StopWatch>();
+            stopWatch.timerActive = false;
             SceneManager.LoadScene(2);
         }
     }

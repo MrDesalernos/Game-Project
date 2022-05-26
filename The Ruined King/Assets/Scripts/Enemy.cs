@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
         if (death == false)
         {
             ScoreManager.instance.AddPoint();
+            source.PlayOneShot(deathSoundEffect);
         }
         death = true;
         animator.SetBool("IsDead", true);
@@ -48,6 +49,5 @@ public class Enemy : MonoBehaviour
         GetComponent<Collider2D>().enabled = true;
         Debug.Log("Enemy Died!");
         Destroy(gameObject, 1.2f);
-        source.PlayOneShot(deathSoundEffect);
     }
 }
